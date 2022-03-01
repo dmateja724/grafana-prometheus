@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   node_exporter:
@@ -7,6 +7,9 @@ services:
     command:
       - '--path.rootfs=/host'
     pid: host
+    ports:
+      # set a different exposed port number (9140) for each host
+      - "9140:9100"
     restart: unless-stopped
     volumes:
       - '/:/host:ro,rslave'
